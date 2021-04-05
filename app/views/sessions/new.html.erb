@@ -1,0 +1,6 @@
+<h3 align="center">User Sign In Page</h3><hr>
+<%= form_with url: '/sign_in', method: 'post' do |form| %>
+  <%= form.text_field 'user[email]' %>
+  <%= form.password_field 'user[password]' %>
+  <%= form.submit "Sign In" %>
+<% end %>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_user_signed_in
+  before_action :redirect_signed_in_user
+  
   def new
     @user = User.new
   end
@@ -18,13 +19,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
-  end
-
-  def check_user_signed_in
-    if user_signed_in?  
-      redirect_to root_path, notice: 'you already signed in' 
-    else 
-      true
-    end
   end
 end

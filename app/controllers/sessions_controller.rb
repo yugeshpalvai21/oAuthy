@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :check_user_signed_in, except: [:destroy]
+  before_action :redirect_signed_in_user, only: [:new, :create]
+  
   def new
   end
 
@@ -16,15 +17,5 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path, notice: 'signed Out Successfully'
-  end
-
-  private
-
-  def check_user_signed_in
-    if user_signed_in?  
-      redirect_to root_path, notice: 'you already signed in' 
-    else 
-      true
-    end
   end
 end

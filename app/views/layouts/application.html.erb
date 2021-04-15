@@ -12,7 +12,8 @@
 
   <body>
     <div class="alerts">
-      <%= flash[:notice] %>
+      <%= notice %>
+      <%= alert %>
     </div>
     <%= show_auth_links.html_safe %> 
     <%= yield %>

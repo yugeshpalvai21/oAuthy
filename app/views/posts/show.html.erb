@@ -12,6 +12,7 @@
 <hr>
 <p>Post Written By - <%= @post.user.username %></p>
 <hr>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if user_signed_in? && policy(@post).access? %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %> |
 <%= link_to 'Back', posts_path %>

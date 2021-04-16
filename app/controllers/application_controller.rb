@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   # helper_method :user_signed_in?, :current_user
   
   before_action :configure_permitted_parameters, if: :devise_controller?

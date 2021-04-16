@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   # helper_method :user_signed_in?, :current_user
   
   before_action :configure_permitted_parameters, if: :devise_controller?
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
 
@@ -10,6 +12,10 @@ class ApplicationController < ActionController::Base
   end
   
   private
+
+  def user_not_authorized
+    redirect_to root_path, notice: "You're not autherized to perform this task"
+  end
 
   # def user_signed_in?
   #   session[:user_id] ? true : false

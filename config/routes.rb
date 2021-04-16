@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   devise_for :users, path: 'auth', path_names: {sign_in: 'login'},controllers: {registrations: 'users/registrations', omniauth_callbacks: 'users/callbacks'}
   root 'pages#home'
 

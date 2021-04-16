@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
 
+  has_many :posts
+
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|
       user.provider = auth.provider

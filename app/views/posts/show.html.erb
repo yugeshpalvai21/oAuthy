@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+<hr>
+<p>Post Written By - <%= @post.user.username %></p>
+<hr>
+<% if user_signed_in? && policy(@post).access? %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %> |
+<%= link_to 'Back', posts_path %>
